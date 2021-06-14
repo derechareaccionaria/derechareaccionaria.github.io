@@ -29,7 +29,7 @@
      ]
      const promises = sources.map(u =>d3.json(u))
 
-     Promise.all(promises).then(([edjes, nodes]) => {
+     Promise.all(promises).then(([edges, nodes]) => {
        const container = document.getElementById("mynetwork");
        const conf = {
          locale: 'es',
@@ -60,7 +60,7 @@
            title: bio,
            ...n
          })),
-         edjes
+         edges
        };
        console.error(graph);
        const network = new vis.Network(container, graph,conf);
