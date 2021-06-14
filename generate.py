@@ -24,6 +24,27 @@ source <a href="https://web.archive.org/web/20210613200617js_/https://reaccionco
 </body>
 
 """)
+t2 = Template("""
+# Derecha reaccionaria<
+
+## Mirror<
+
+source <a href="https://web.archive.org/web/20210613200617js_/https://reaccionconservadora.net">Web archive</a>
+
+{% for x in data %}
+ ### **Nombre: {{ x["nombre"] }}**
+ 
+ **Bio** {{ x["bio"] }}
+ **Provincia** {{ x["provincia"] }}
+ **antiderechos**{{ x["antiDerechos"] }}
+ ![person]({{x["imagem"]}}) alt="Italian Trulli">
+
+---------------------------------
+{% endfor %}
+
+
+""")
+
 
 
 with open("nodes.json", "r") as f:
@@ -34,5 +55,10 @@ with open("nodes.json", "r") as f:
     print(jdata)
 
 index = t.render(data=jdata)
+readme = t2.render(data=jdata)
 with open("index.html", 'w') as f:
     f.write(index)
+
+with open("README.md", 'w') as f:
+    f.write(readme)
+
