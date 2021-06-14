@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Network</title>
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-fetch@3"></script>
+    <style type="text/css">
+     html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+     #mynetwork {
+         min-height: 100%;
+         height: 100%;
+         border: 1px solid lightgray;
+     }
+    </style>
+  </head>
+  <body>
+    <div id="mynetwork"></div>
+    <script type="text/javascript">
+     const sources = [
+       './edges.json',
+       './nodes.json'
+     ]
+     const promises = sources.map(u =>d3.json(u))
+
+     Promise.all(promises).then(([edjes, nodes]) => {
+       const container = document.getElementById("mynetwork");
+       const conf = {
+         locale: 'es',
+         height: '100%',
+         layout: {
+           improvedLayout: false
+         },
+         interaction: {
+           zoomView: true,
+           navigationButtons:true
+         },
+         physics: {
+           enabled: true
+         },
+         edges: {
+           arrows: 'to'
+         }
+       }
+       const graph = {
+         nodes: nodes.map(({nombre, imagen, bio, ...n}) =>({
+           id: nombre,
+           label: nombre,
+           image: imagen,
+           shape: imagen ? 'image':undefined,
+           title: bio,
+           ...n
+         })),
+         edjes
+       };
+       console.error(graph);
+       const network = new vis.Network(container, graph,conf);
+     })
+     // create a network
+
+    </script>
+  </body>
+</html>
