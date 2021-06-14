@@ -4,6 +4,13 @@ import json
 from jinja2 import Template
 
 t = Template("""
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Derecha reaccionaria immortal</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
 <body>
 <h1>Derecha reaccionaria</h1>
 
@@ -22,7 +29,7 @@ source <a href="https://web.archive.org/web/20210613200617js_/https://reaccionco
 {% endfor %}
 
 </body>
-
+</html>
 """)
 t2 = Template("""
 # Derecha reaccionaria<
