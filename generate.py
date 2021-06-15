@@ -63,7 +63,7 @@ with open("nodes.json", "r") as f:
 
 index = t.render(data=jdata)
 readme = t2.render(data=jdata)
-with open("index.html", 'w') as f:
+with open("detalle.html", 'w') as f:
     f.write(index)
 
 with open("README.md", 'w') as f:
